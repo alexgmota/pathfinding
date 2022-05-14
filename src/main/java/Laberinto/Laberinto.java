@@ -3,13 +3,17 @@ package Laberinto;
 import java.util.Random;
 
 public class Laberinto {
-    public final int MURO = 0;
-    public final int VACIO = 1;
+    private final int MURO = 0;
+    private final int VACIO = 1;
+    private final int FILAS;
+    private final int COLUMNAS;
 
     private final int[][] grid;
 
     public Laberinto(int width, int height, int tamCelda) {
-        grid = new int[height/tamCelda][width/tamCelda];
+        FILAS = height / tamCelda;
+        COLUMNAS = width / tamCelda;
+        grid = new int[FILAS][COLUMNAS];
         inicializarGrid();
     }
 
@@ -20,7 +24,7 @@ public class Laberinto {
             for (int j = 0; j <grid[0].length; j++)
                 grid[i][j] = (r.nextFloat() < probabilidadMuro)? MURO : VACIO;
         grid[0][0] = VACIO;
-        grid[grid.length-1][grid[0].length-1] = VACIO;
+        grid[grid.length - 1][grid[0].length - 1] = VACIO;
     }
 
     public boolean esMuro(int i, int j) {
@@ -29,5 +33,13 @@ public class Laberinto {
 
     public int[][] getGrid() {
         return grid;
+    }
+
+    public int getCOLUMNAS() {
+        return COLUMNAS;
+    }
+
+    public int getFILAS() {
+        return FILAS;
     }
 }

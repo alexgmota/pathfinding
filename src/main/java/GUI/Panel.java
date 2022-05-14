@@ -9,7 +9,7 @@ public class Panel extends JPanel {
 
     private final int tamPantalla = 800;
     private final int tamCelda = 20;
-    Laberinto laberinto = null;
+    Laberinto laberinto;
 
     public Panel() {
         setPreferredSize(new Dimension(tamPantalla, tamPantalla));
