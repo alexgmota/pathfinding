@@ -26,15 +26,19 @@ public class Camino {
     public List<Camino> getVecinos() {
         LinkedList<Camino> vecinos = new LinkedList<>();
         Punto p = camino.getLast();
-        if (p.getX() > 0)
-            addPunto(vecinos, new Punto(p.getX() - 1, p.getY()));
-        if (p.getX() < laberinto.getCOLUMNAS() - 1)
-            addPunto(vecinos, new Punto(p.getX() + 1, p.getY()));
-        if (p.getY() > 0)
-            addPunto(vecinos, new Punto(p.getX(), p.getY() - 1));
-        if (p.getY() < laberinto.getFILAS() - 1)
-            addPunto(vecinos, new Punto(p.getX(), p.getY() + 1));
+        int[] dx = {0, 1, 1, 1, 0, -1, -1, -1};
+        int[] dy = {1, 1, 0, -1, -1, -1, 0, 1};
+        for (int i = 0; i < dx.length; i++) {
+            Punto aux = new Punto(p.getX()+ dx[i], p.getY() + dy[i]);
+            if (dentroLaberinto(aux))
+                addPunto(vecinos, aux);
+        }
         return vecinos;
+    }
+
+    private boolean dentroLaberinto(Punto p) {
+        return p.getX() >= 0 && p.getX() < laberinto.getCOLUMNAS()
+                && p.getY() >= 0 && p.getY() < laberinto.getFILAS();
     }
 
     private void addPunto(LinkedList<Camino> vecinos, Punto p) {
