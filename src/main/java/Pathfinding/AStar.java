@@ -29,7 +29,7 @@ public class AStar implements IPathFinder{
 
      private void imprimirCP() {
          cp.forEach(camino ->
-                 System.out.println(Arrays.toString(camino.getCamino().toArray()) + " "
+                 System.out.println(camino.getLast() + " "
                                     + camino.getCosteHeuristico()));
      }
 
