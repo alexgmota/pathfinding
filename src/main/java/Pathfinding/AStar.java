@@ -29,8 +29,9 @@ public class AStar implements IPathFinder{
 
      private void imprimirCP() {
          cp.forEach(camino ->
-                 System.out.println(camino.getLast() + " "
+                    System.out.println(camino.getLast() + " "
                                     + camino.getCosteHeuristico()));
+         System.out.println();
      }
 
      private void ordenar() {
@@ -38,20 +39,21 @@ public class AStar implements IPathFinder{
      }
 
      private void podar() {
+         LinkedList<Camino> aux = new LinkedList<>(cp);
+         HashMap<String, Camino> map = new HashMap<>();
          cp.forEach(camino -> {
              Punto p = camino.getLast();
-             LinkedList<Camino> aux =  new LinkedList<>(cp);
-             for (Camino c : cp){
-                 if (c != camino && c.getLast().equals(p)) {
-                     if (c.getCosteHeuristico() > camino.getCosteHeuristico()) {
-                         aux.remove(c);
-                     } else {
-                         aux.remove(camino);
-                         p = c.getLast();
-                     }
+             if (map.containsKey(p.toString())) {
+                 if (map.get(p.toString()).getCosteHeuristico() > camino.getCosteHeuristico()){
+                     aux.remove(map.get(p.toString()));
+                     map.replace(p.toString(), camino);
+                 } else {
+                     aux.remove(camino);
                  }
+             } else {
+                 map.put(p.toString(), camino);
              }
-             cp = aux;
          });
+         cp = aux;
      }
 }

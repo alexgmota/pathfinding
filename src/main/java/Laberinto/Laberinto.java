@@ -21,7 +21,7 @@ public class Laberinto {
     }
 
     private void inicializarGrid() {
-        float probabilidadMuro = 0.2f;
+        float probabilidadMuro = 0.35f;
         Random r = new Random();
         for(int i = 0; i < grid.length; i++)
             for (int j = 0; j <grid[0].length; j++)
@@ -32,10 +32,6 @@ public class Laberinto {
 
     public boolean esMuro(int i, int j) {
         return grid[i][j] == MURO;
-    }
-
-    public int[][] getGrid() {
-        return grid;
     }
 
     public int getCOLUMNAS() {
