@@ -1,10 +1,13 @@
 package Laberinto;
 
+import Pathfinding.AStar;
+import Pathfinding.IPathFinder;
+
 import java.util.Random;
 
 public class Laberinto {
-    private final int MURO = 0;
-    private final int VACIO = 1;
+    private final int MURO = 1;
+    private final int VACIO = 0;
     private final int FILAS;
     private final int COLUMNAS;
 
@@ -41,5 +44,10 @@ public class Laberinto {
 
     public int getFILAS() {
         return FILAS;
+    }
+
+    public Camino buscarCamino() {
+        IPathFinder pf = new AStar(this);
+        return pf.buscarCamino();
     }
 }
