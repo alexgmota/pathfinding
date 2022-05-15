@@ -18,7 +18,6 @@ public class AStar implements IPathFinder{
 
      public Camino buscarCamino() {
          while (cp.size() > 0 && !cp.getFirst().isCompleto()) {
-             imprimirCP();
              List<Camino> nuevos = new ArrayList<>(cp.pop().getVecinos());
              nuevos.forEach(camino -> cp.addLast(camino));
              ordenar();

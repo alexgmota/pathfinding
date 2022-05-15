@@ -2,6 +2,7 @@ package GUI;
 
 import Laberinto.Laberinto;
 import Laberinto.Camino;
+import Laberinto.Punto;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,12 +40,13 @@ public class Panel extends JPanel {
 
     private void pintarCamino(Graphics2D g) {
         Camino camino = laberinto.buscarCamino();
+        int r = (int) (tamCelda * 0.7);
         if (camino != null){
             g.setPaint(Color.cyan);
             camino.getCamino().forEach(p -> {
-                int x = p.getX()*tamCelda;
-                int y = p.getY()*tamCelda;
-                g.fillRect(x, y, tamCelda, tamCelda);
+                Punto punto = new Punto ((int) (p.getX() * tamCelda + tamCelda*0.15),
+                            (int) (p.getY() * tamCelda + tamCelda*0.15));
+                g.fillOval(punto.getX(),punto.getY(), r, r);
             });
         } else {
             g.setPaint(Color.RED);
