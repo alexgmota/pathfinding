@@ -29,9 +29,9 @@ public class Panel extends JPanel {
         for(int i = 0; i < tamPantalla; i+=tamCelda) {
             for (int j = 0; j < tamPantalla; j+=tamCelda) {
                 if (laberinto.esMuro(i/tamCelda, j/tamCelda))
-                    g.setPaint(Color.DARK_GRAY);
+                    g.setPaint(new Color(0x0D4AA6));
                 else
-                    g.setPaint(Color.orange);
+                    g.setPaint(new Color(0xF2AE27));
                 g.fillRect(i,j,tamCelda,tamCelda);
             }
         }
@@ -42,7 +42,7 @@ public class Panel extends JPanel {
         Camino camino = laberinto.buscarCamino();
         int r = (int) (tamCelda * 0.7);
         if (camino != null){
-            g.setPaint(Color.cyan);
+            g.setPaint(new Color(0x29F21B));
             camino.getCamino().forEach(p -> {
                 Punto punto = new Punto ((int) (p.getX() * tamCelda + tamCelda*0.15),
                             (int) (p.getY() * tamCelda + tamCelda*0.15));
@@ -50,7 +50,8 @@ public class Panel extends JPanel {
             });
         } else {
             g.setPaint(Color.RED);
-            g.drawString("No se ha encontrado camino", 10, 10);
+            g.setFont(new Font("Arial", Font.PLAIN , 40));
+            g.drawString("No se ha encontrado camino", 20, 45);
         }
     }
 }
