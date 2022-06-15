@@ -43,12 +43,7 @@ public class AStar implements IPathFinder{
          cp.forEach(camino -> {
              Punto p = camino.getLast();
              if (map.containsKey(p.toString())) {
-                 if (map.get(p.toString()).getCosteHeuristico() > camino.getCosteHeuristico()){
-                     aux.remove(map.get(p.toString()));
-                     map.replace(p.toString(), camino);
-                 } else {
-                     aux.remove(camino);
-                 }
+                 aux.remove(camino);
              } else {
                  map.put(p.toString(), camino);
              }
