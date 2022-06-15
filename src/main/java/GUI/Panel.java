@@ -9,8 +9,8 @@ import java.awt.*;
 
 public class Panel extends JPanel {
 
-    private final int tamPantalla = 400;
-    private final int tamCelda = 40;
+    private final int tamPantalla = 600;
+    private final int tamCelda = 20;
     Laberinto laberinto;
 
     public Panel() {

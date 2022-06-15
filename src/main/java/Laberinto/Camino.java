@@ -62,7 +62,10 @@ public class Camino {
 
     public double getCosteHeuristico() {
         Punto p = camino.getLast();
-        double distancia = Math.sqrt(p.getX()*p.getX() + p.getY()*p.getY());
+        Punto fin = laberinto.getFin();
+        int x = p.getX() - fin.getX();
+        int y = p.getY() - fin.getY();
+        double distancia = Math.sqrt(x*x - y*y);
         return getCoste() + distancia;
     }
 
