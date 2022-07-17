@@ -45,9 +45,4 @@ public class Laberinto {
     public Punto getFin() {
         return new Punto(FILAS-1, COLUMNAS-1);
     }
-
-    public Camino buscarCamino() {
-        IPathFinder pf = new AStar(this);
-        return pf.buscarCamino();
-    }
 }

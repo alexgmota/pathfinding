@@ -26,7 +26,12 @@ public class AStar implements IPathFinder{
          return (cp.size() > 0)? cp.get(0) : null;
      }
 
-     private void imprimirCP() {
+    @Override
+    public Camino getCaminoActual() {
+        return cp.getFirst();
+    }
+
+    private void imprimirCP() {
          cp.forEach(camino ->
                     System.out.println(camino.getLast() + " "
                                     + camino.getCosteHeuristico()));

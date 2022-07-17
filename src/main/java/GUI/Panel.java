@@ -3,22 +3,32 @@ package GUI;
 import Laberinto.Laberinto;
 import Laberinto.Camino;
 import Laberinto.Punto;
+import Pathfinding.IPathFinder;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Panel extends JPanel {
 
-    private final int tamPantalla = 600;
-    private final int tamCelda = 20;
+    private static final int tamPantalla = 600;
+    private static final int tamCelda = 20;
     Laberinto laberinto;
+    IPathFinder pf;
 
-    public Panel() {
+    public Panel(Laberinto laberinto, IPathFinder pf) {
         setPreferredSize(new Dimension(tamPantalla, tamPantalla));
         setSize(new Dimension(tamPantalla, tamPantalla));
-        laberinto = new Laberinto(tamPantalla, tamPantalla, tamCelda);
+        this.laberinto = laberinto;
+        this.pf = pf;
     }
 
+    public static int getTamPantalla() {
+        return tamPantalla;
+    }
+
+    public static int getTamCelda() {
+        return tamCelda;
+    }
     @Override
     public void paint(Graphics g) {
         pintarLaberinto((Graphics2D) g);
@@ -39,7 +49,7 @@ public class Panel extends JPanel {
     }
 
     private void pintarCamino(Graphics2D g) {
-        Camino camino = laberinto.buscarCamino();
+        Camino camino = pf.getCaminoActual();
         int r = (int) (tamCelda * 0.7);
         if (camino != null){
             g.setPaint(new Color(0x29F21B));
