@@ -10,8 +10,8 @@ import java.awt.*;
 
 public class Panel extends JPanel {
 
-    private static final int tamPantalla = 600;
-    private static final int tamCelda = 20;
+    private static final int tamPantalla = 800;
+    private static final int tamCelda = 10;
     Laberinto laberinto;
     IPathFinder pf;
 
@@ -33,6 +33,7 @@ public class Panel extends JPanel {
     public void paint(Graphics g) {
         pintarLaberinto((Graphics2D) g);
         pintarCamino((Graphics2D) g);
+        repaint();
     }
 
     private void pintarLaberinto (Graphics2D g) {
@@ -41,7 +42,7 @@ public class Panel extends JPanel {
                 if (laberinto.esMuro(i/tamCelda, j/tamCelda))
                     g.setPaint(new Color(0x0D4AA6));
                 else
-                    g.setPaint(new Color(0xF2AE27));
+                    g.setPaint(Color.black);
                 g.fillRect(i,j,tamCelda,tamCelda);
             }
         }

@@ -65,7 +65,7 @@ public class Camino {
         Punto fin = laberinto.getFin();
         int x = p.getX() - fin.getX();
         int y = p.getY() - fin.getY();
-        double distancia = Math.sqrt(x*x - y*y);
+        double distancia = Math.sqrt(x*x + y*y);
         return getCoste() + distancia;
     }
 
